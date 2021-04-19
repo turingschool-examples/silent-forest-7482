@@ -20,6 +20,14 @@ describe 'chef show page' do
       expect(page).to have_content("dish_2")
       expect(page).to have_content("this is dish 2")
     end
+
+    it 'when you click remove dish for dish_1' do
+      expect(page).to have_content("dish_1")
+      within ".dish-#{@dish_1.id}" do
+        click_on "remove dish"
+      end
+      expect(page).to_not have_content("dish_1")
+    end
   end
 
   context 'you look at the ingredients section' do

@@ -1,7 +1,10 @@
 <%= @chef.name %>
 <% @chef.dishes.each do |dish| %>
-  <%= dish.name %>
-  <%= dish.description %>
+  <div class="dish-<%= dish.id %>">
+    <%= dish.name %>
+    <%= dish.description %>
+    <%= button_to 'remove dish', remove_dish_chef_path(@chef), params: {dish_id: dish.id}, method: :patch %>
+  </div>
 <% end %>
 
 <% @dish_ingredients.chef_ingredients(@chef).each do |ingredient| %>
