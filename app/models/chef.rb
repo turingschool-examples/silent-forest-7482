@@ -3,7 +3,7 @@ class Chef <ApplicationRecord
   has_many :dishes
   has_many :ingredients, through: :dishes
 
-  def ingredient_names
+  def ingredient_names_and_calories
     ingredients.distinct
     .order('ingredients.calories desc')
     .pluck(:name, :calories)

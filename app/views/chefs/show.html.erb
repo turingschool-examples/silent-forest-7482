@@ -10,6 +10,6 @@
 <% end %>
 </h2>
 
-<% @chef.ingredient_names.each do |name, calories| %>
+<% @chef.ingredient_names_and_calories.each do |name, calories| %>
 <%= name %>, <% calories %>
 <% end %>
