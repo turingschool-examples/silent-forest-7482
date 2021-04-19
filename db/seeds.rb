@@ -13,10 +13,10 @@ DishIngredient.destroy_all
 chef1 = Chef.create!(name: 'Gordon Ramsay')
 chef2 = Chef.create!(name: 'Linguine')
 
-dish1 = chef1.create!(name: 'Meatloaf', description: 'it is meatloaf')
-dish2 = chef1.create!(name: 'Filet Mignon', description: 'it is steak')
-dish3 = chef2.create!(name: 'Omelete', description: 'made with real eggs')
-dish4 = chef2.create!(name: 'Ratatouille', description: 'like in the movie')
+dish1 = chef1.dishes.create!(name: 'Meatloaf', description: 'it is meatloaf')
+dish2 = chef1.dishes.create!(name: 'Filet Mignon', description: 'it is steak')
+dish3 = chef2.dishes.create!(name: 'Omelete', description: 'made with real eggs')
+dish4 = chef2.dishes.create!(name: 'Ratatouille', description: 'like in the movie')
 
 ingr1 = Ingredient.create!(name: 'beef', calories: 150)
 ingr2 = Ingredient.create!(name: 'egg', calories: 100)
