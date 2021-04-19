@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 2021_04_19_154957) do
     t.index ["dish_id"], name: "index_ingredients_on_dish_id"
   end
 
-  add_foreign_key "dish_ingredients", "dishes"
+  add_foreign_key "dish_ingredients", "dishs"
   add_foreign_key "dish_ingredients", "ingredients"
-  add_foreign_key "dishes", "chefs"
-  add_foreign_key "dishes", "ingredients"
-  add_foreign_key "ingredients", "dishes"
+  add_foreign_key "dishs", "chefs"
+  add_foreign_key "dishs", "ingredients"
+  add_foreign_key "ingredients", "dishs"
 end
