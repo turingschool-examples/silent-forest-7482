@@ -3,4 +3,8 @@ class ChefsController < ApplicationController
     @chef = Chef.find(params[:id])
     dishs = @chef.dishes
   end
+
+  def destroy
+    
+  end
 end
