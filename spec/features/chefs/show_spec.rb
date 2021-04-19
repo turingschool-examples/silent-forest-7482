@@ -27,6 +27,7 @@ describe 'chef show page' do
         click_on "remove dish"
       end
       expect(page).to_not have_content("dish_1")
+      expect(Dish.find(@dish_1.id)).to eq(@dish_1)
     end
   end
 
