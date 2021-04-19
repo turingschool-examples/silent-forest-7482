@@ -4,7 +4,7 @@
   <h2>Dishes: </h2>
   <ul>
     <% @chef.dishes.each do |dish| %>
-      <li><%= dish.name %> - <%= dish.description %></li>
+      <li id="<%= dish.name %>"><%= dish.name %> - <%= dish.description %> <%= button_to 'Delete', dish_path(dish), method: :delete %></li>
     <% end %>
   </ul>
 </div>

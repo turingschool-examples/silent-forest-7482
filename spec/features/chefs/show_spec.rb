@@ -43,5 +43,22 @@ RSpec.describe 'chef show page' do
         expect(page).to have_content(@ingr3.calories)
       end
     end
+
+    context 'you can remove a dish using the delete button' do
+      it 'dishes have a delete button next to them' do
+        within '#Omelete' do
+          expect(page).to have_button('Delete')
+        end
+      end
+
+      it 'clicking delete button removes dish from page' do
+        within '#Omelete' do
+          click_on 'Delete'
+        end
+        
+        expect(current_path).to eq("/chefs/#{@chef.id}")
+        expect(page).to_not have_content(@dish1.name)
+      end
+    end
   end
 end
