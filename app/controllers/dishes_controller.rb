@@ -7,4 +7,11 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
   end
+
+  def destroy
+    Dish.find(params[:id])
+    DishIngredient.delete(params[:dish_id])
+
+    redirect_to "/chefs/#{@chef.id}"
+  end
 end

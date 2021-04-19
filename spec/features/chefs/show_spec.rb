@@ -32,5 +32,13 @@ RSpec.describe 'Chef' do
       expect(page).to have_content(@ingredient1.name)
       expect(page).to have_content(@ingredient3.calories)
     end
+
+    it 'can delete a dish' do
+      expect(page).to have_button("Delete #{@dish1.name}")
+
+      click_button("Delete #{@dish1.name}")
+save_and_open_page
+      expect(page).not_to have_content(@dish1.name)
+    end
   end
 end
