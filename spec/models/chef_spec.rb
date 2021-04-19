@@ -25,10 +25,4 @@ RSpec.describe Chef, type: :model do
   describe "relationships" do
     it {should have_many :dishes}
   end
-  describe "instance methods" do
-    it 'return chef ingredients' do
-
-      expect(Chef.first.ingredients_included).to contain_exactly(@ingredient_5, @ingredient_6, @ingredient_1,  @ingredient_2)
-    end
-  end
 end

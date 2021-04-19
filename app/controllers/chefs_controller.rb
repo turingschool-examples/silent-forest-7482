@@ -1,7 +1,6 @@
 class ChefsController < ApplicationController
   def show
     @chef= Chef.find(params[:id])
-    binding.pry
-    @ingredients = @chef.ingredients.uniq
+    @ingredients = Ingredient.ingredients_included_by_cal(@chef.id)
   end
 end

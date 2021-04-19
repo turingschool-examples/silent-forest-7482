@@ -26,9 +26,9 @@ RSpec.describe Ingredient, type: :model do
   end
 
   describe "class methods" do
-    it 'orders ingredients by calories greatest to smallest' do
+    it 'returns ingredients for a chef and orders by calories' do
 
-      expect(Ingredient.order_by_cal).to eq([@ingredient_5,@ingredient_4,@ingredient_6,@ingredient_1,@ingredient_3,@ingredient_2])
+      expect(Ingredient.ingredients_included_by_cal(@chef.id)).to eq([@ingredient_5,@ingredient_6,@ingredient_1,@ingredient_2])
     end
   end
 end

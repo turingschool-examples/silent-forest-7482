@@ -12,7 +12,7 @@
 <%end%>
 
 <h2>Chef's Ingredients</h2>
-<%@ingredients.sort_by_cal.each do |ingredient|%>
+<%@ingredients.each do |ingredient|%>
   <section id ="ingredient-<%=ingredient.id%>">
   <p>Ingredient Name:<%=ingredient.name%><p>
   <p>Ingredeient Calories:<%=ingredient.calories%><p>
