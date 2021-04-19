@@ -39,6 +39,8 @@ RSpec.describe "Chef Show Page" do
           expect(page).to have_content(@ingredient_2.calories)
           expect(page).to have_content(@ingredient_3.name)
           expect(page).to have_content(@ingredient_3.calories)
+          expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
+          expect(@ingredient_3.name).to appear_before(@ingredient_1.name)
         end
       end
     end
