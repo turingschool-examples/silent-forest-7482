@@ -1,0 +1,12 @@
+<h1>Chef Show Page</h1>
+
+<h2>Chef's Name</h2>
+<p>Name: <%= @chef.name%><p>
+
+<h2>Chef's Dishes</h2>
+<%@chef.dishes.each do |dish|%>
+  <section id ="dish-<%=dish.id%>">
+  <p>Dish Name:<%=dish.name%><p>
+  <p>Dish Description:<%=dish.description%><p>
+  </section>
+<%end%>
