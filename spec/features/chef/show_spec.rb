@@ -7,6 +7,12 @@ RSpec.describe 'the chef show' do
     @dish_1 = @chef.dishes.create!(name: 'ravioli', description: 'chef boy rds')
     @dish_2 = @chef.dishes.create!(name: 'poptart', description: 'toaster ready and yummy')
     @dish_3 = @chef.dishes.create!(name: 'ribeye steak', description: 'expensive, lovely, and fresh')
+
+    @ingredient_1 = @dish_1.ingredients.create!(name: 'italian pasta sauce', calories: 100)
+    @ingredient_2 = @dish_2.ingredients.create!(name: 'unknown chocolate', calories: 30)
+    @ingredient_3 = @dish_3.ingredients.create!(name: 'Salt and pepper', calories: 10)
+
+    DishesIngredient.create!(dish: @dish_1, ingredient: @ingredient_1)
   end
 
 
@@ -20,5 +26,21 @@ RSpec.describe 'the chef show' do
     expect(page).to have_content(@dish_1.description)
     expect(page).to have_content(@dish_2.description)
     expect(page).to have_content(@dish_3.description)
+  end
+
+  it 'displays unique ingredients names and calories ordered by highest caloric dishes first' do
+    visit "/chefs/#{@chef.id}"
+
+    expect(page).to have_content(@ingredient_1.name, count: 1)
+    expect(page).to have_content(@ingredient_1.calories, count: 1)
+
+    expect(page).to have_content(@ingredient_2.name)
+    expect(page).to have_content(@ingredient_2.calories)
+
+    expect(page).to have_content(@ingredient_3.name)
+    expect(page).to have_content(@ingredient_3.calories)
+
+    expect(@ingredient_1.name).to appear_before(@ingredient_2.name)
+    expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
   end
 end
