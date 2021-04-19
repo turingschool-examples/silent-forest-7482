@@ -28,6 +28,11 @@ RSpec.describe Chef, type: :model do
     describe 'most_popular_ingredients' do
       it 'returns the three most used ingredients in the chefs dishes' do
         chef = Chef.create!(name: "Anthony")
+        other_chef = Chef.create!(name: "Other")
+
+        dish7 = chef.dishes.create!(name: "bleh", description: "meh")
+        ingredient6 = Ingredient.create!(name: "celery", calories: 30)
+        dish7.ingredients.push(ingredient6)
 
         dish1 = chef.dishes.create!(name: "Yum", description: "Very yum")
         dish2 = chef.dishes.create!(name: "Tasty", description: "Very tasty")
