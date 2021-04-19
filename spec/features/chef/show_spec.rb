@@ -42,10 +42,40 @@ RSpec.describe 'chef show page' do
 			expect(page).to have_content(@dish_3.description)
 		end
 	end
-	it 'shows the chef ingredients' do
+	it 'shows the chef ingredients, uniq, and in order of calories' do
 		visit "/chefs/#{@chef.id}"
 
+		expect(@ingredient_5.name).to appear_before(@ingredient_5=4.name)
+		expect(@ingredient_4.name).to appear_before(@ingredient_6.name)
+		expect(@ingredient_6).to appear_before(@ingredient_1.name)
+		expect(@ingredient_1).to appear_before(@ingredient_3.name)
+		expect(@ingredient_3).to appear_before(@ingredient_2.name)
 
+		expect(this).to appear_before(that)
+		within "#ingredient-#{@ingredient_5.id}" do 
+			expect(page).to have_content(@ingredient_5.name)
+			expect(page).to have_content(@ingredient_5.calories)
+		end
+    within "#ingredient-#{@ingredient_4.id}" do 
+			expect(page).to have_content(@ingredient_4.name)
+			expect(page).to have_content(@ingredient_4.calories)
+		end
+    within "#ingredient-#{@ingredient_6.id}" do 
+			expect(page).to have_content(@ingredient_6.name)
+			expect(page).to have_content(@ingredient_6.calories)
+		end
+		within "#ingredient-#{@ingredient_1.id}" do 
+			expect(page).to have_content(@ingredient_1.name)
+			expect(page).to have_content(@ingredient_1.calories)
+		end
+    within "#ingredient-#{@ingredient_3.id}" do 
+			expect(page).to have_content(@ingredient_3.name)
+			expect(page).to have_content(@ingredient_3.calories)
+		end
+    within "#ingredient-#{@ingredient_2.id}" do 
+			expect(page).to have_content(@ingredient_2.name)
+			expect(page).to have_content(@ingredient_2.calories)
+		end
 
 	end
 end
