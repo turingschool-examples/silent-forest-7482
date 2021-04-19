@@ -38,4 +38,27 @@ RSpec.describe "Chef Show Page" do
     expect(page.all(".ingredient")[0].text).to eq("#{@butter.name}, #{@butter.calories}")
     expect(page.all(".ingredient")[1].text).to eq("#{@batter.name}, #{@batter.calories}")
   end
+
+  it 'has buttons to delete a dish' do
+    within("#dish-#{@chicken.id}") do
+      expect(page).to have_button("Delete")
+    end
+
+    within("#dish-#{@mashed_potatoes.id}") do
+      expect(page).to have_button("Delete")
+    end
+  end
+
+  it 'can delete a dish' do
+    within("#dish-#{@mashed_potatoes.id}") do
+      expect(page).to have_button("Delete")
+      click_button "Delete"
+    end
+
+    expect(current_path).to eq("/chefs/#{@chef.id}")
+    expect(page).to_not have_content("#{@mashed_potatoes.name}")
+    expect(page).to_not have_content("#{@mashed_potatoes.description}")
+    expect(page).to_not have_content("#{@butter.name}")
+    expect(page).to_not have_content("#{@butter.calories}")
+  end
 end

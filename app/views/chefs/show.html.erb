@@ -5,7 +5,9 @@
 
 <ul>
   <% @dishes.each do |dish| %>
-    <li><%= dish.name %>, <%= dish.description %></li>
+    <li id="dish-<%= dish.id %>">
+      <%= dish.name %>, <%= dish.description %>, <%= button_to "Delete", "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+    </li>
   <% end %>
 </ul><br>
 
