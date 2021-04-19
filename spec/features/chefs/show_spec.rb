@@ -23,15 +23,15 @@ RSpec.describe "Chef Show Page" do
           expect(page).to have_content(@dish_1.description)
           expect(page).to have_content(@dish_2.description)
           expect(page).to have_content(@dish_3.description)
-          save_and_open_page
+        end
+      end
+
+      it "Then I see the name and calories of all ingredients used in dishes" do
+        within ".ingredients-describe" do
+
         end
       end
     end
   end
 
-#
-# As a visitor
-# When I visit a chef's show page
-# Then I see the name of the chef
-# And I see the names and descriptions of all the chef's dishes
 end

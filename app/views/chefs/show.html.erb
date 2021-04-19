@@ -5,10 +5,19 @@
 </div>
 
 <div class="dish-describe">
+  <h3>Dishes:</h3>
   <ul>
     <% @chef.dishes.each do |dish| %>
     <li><%= dish.name %>---DESCRIPTION: <%= dish.description %></li>
     <% end %>
   </ul>
+</div>
 
+<div class="ingredients-describe">
+  <h3>ingredients:</h3>
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %> <%= ingredient.calories %></li>
+    <% end %>
+  </ul>
 </div>
