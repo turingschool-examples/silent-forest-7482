@@ -11,7 +11,7 @@
 @ingredient_4 = Ingredient.create!(name: "Ingredient_4", calories: 50)
 
 @ingredient_5 = Ingredient.create!(name: "Ingredient_5", calories: 100)
-@ingredient_6 = Ingredient.create!(name: "Ingredient_5", calories: 200)
+@ingredient_6 = Ingredient.create!(name: "Ingredient_6", calories: 200)
 
 DishIngredient.create(dish_id: @dish_1.id, ingredient_id: @ingredient_1.id)
 DishIngredient.create(dish_id: @dish_1.id, ingredient_id: @ingredient_2.id)

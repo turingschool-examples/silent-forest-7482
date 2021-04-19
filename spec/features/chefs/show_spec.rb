@@ -71,5 +71,19 @@ RSpec.describe 'the chef show page' do
         expect(@ingredient_3.name).to appear_before(@ingredient_1.name)
       end
     end
+
+    it 'displays a button to delete each dish' do
+      expect(page).to have_content("Delete #{@dish_1.name}")
+      expect(page).to have_content("Delete #{@dish_2.name}")
+
+      click_on("Delete #{@dish_1.name}")
+
+      expect(page).to have_current_path("/chefs/#{@chef_1.id}")
+
+      expect(page).to_not have_content(@dish_1.name)
+      expect(page).to_not have_content(@dish_1.description)
+    end
   end
+
+
 end
