@@ -73,8 +73,9 @@ RSpec.describe 'the chef show page' do
     end
 
     it 'displays a button to delete each dish' do
-      expect(page).to have_content("Delete #{@dish_1.name}")
-      expect(page).to have_content("Delete #{@dish_2.name}")
+      expect(page).to have_current_path(chef_path(@chef_1))
+      # expect(page).to have_content("Delete #{@dish_1.name}")
+      # expect(page).to have_content("Delete #{@dish_2.name}")
 
       click_on("Delete #{@dish_1.name}")
 

@@ -3,8 +3,9 @@
 <section id="dishes">
   <h3>Dishes</h3>
   <% @chef.dishes.each do |dish| %>
-      <h4> <%= dish.name %> </h4>
-      <p> <%= dish.description %> </p>
+      <h4>Dish name: <%= dish.name %> <%= button_to "Delete #{dish.name}", "/dishes/#{dish.id}", method: :delete %> </h4>
+      <p>Description: <%= dish.description %> </p>
+      <br>
   <% end %>
 </section>
 <br>
