@@ -1,0 +1,8 @@
+<h1><%= @chef.name %></h1>
+
+<h3>Names and Descriptions of Dishes</h3>
+<% @chef.dishes.each do |dish| %>
+<section class="dish-<%= dish.id %>">
+<%= dish.name %> - <%= dish.description %><br>
+</section>
+<% end %>
