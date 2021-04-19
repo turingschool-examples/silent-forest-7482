@@ -71,9 +71,8 @@ RSpec.describe 'chef show page' do
 			expect(page).to have_button("Delete")
 			click_button('Delete')
 		end
-		current_path "/chefs/#{@chef.id}"
-		expect(page).to_no have_content(@dish_1.name)
+
+		expect(page).to_not have_content(@dish_1.name)
 	end
 end
 
-<%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
