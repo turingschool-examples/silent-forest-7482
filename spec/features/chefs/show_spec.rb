@@ -86,5 +86,20 @@ RSpec.describe 'the chef show page' do
     end
   end
 
+  # EXTENSIONS
+  describe "it has a section 'Most Popular Ingredients'" do
+    it "lists the three most popular ingredients by number of dishes used in" do
+      dish_4 = @chef_1.dishes.create!(name: "Dish_4", description: "Umami")
+      dish_5 = @chef_1.dishes.create!(name: "Dish_5", description: "Sweet and Sour")
+      DishIngredient.create(dish_id: dish_4.id, ingredient_id: @ingredient_3.id)
+      DishIngredient.create(dish_id: dish_5.id, ingredient_id: @ingredient_4.id)
 
+      within "#popular" do
+        expect(@ingredient_3.name).to appear_before(@ingredient_1.name)
+        expect(@ingredient_1.name).to appear_before(@ingredient_2.name)
+
+        expect(page).to_not have_content(@ingredient_4.name)
+      end
+    end
+  end 
 end
