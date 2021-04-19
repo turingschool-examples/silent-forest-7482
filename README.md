@@ -73,7 +73,7 @@ And I see that the list of ingredients is ordered from most calories to least ca
 ```
 
 ```
-User Story 3 - Remove a Dish from a Chef
+User Story 3 - Destroy a Dish
 
 As a visitor
 When I visit a chef's show page
@@ -81,7 +81,6 @@ Then next to each dish I see a button to remove it from this chef
 When I click this button
 I am returned to the chef's show page
 And I no longer see the dish listed
-(Note: you should not destroy the dish record entirely. Instead, you should disassociate it from the Chef)
 ```
 
 
