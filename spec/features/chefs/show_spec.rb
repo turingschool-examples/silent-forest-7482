@@ -23,7 +23,7 @@ RSpec.describe 'Chef show page' do
       end
 
       it "I see the name of the chef" do
-        save_and_open_page
+        # save_and_open_page
         expect(page).to have_content(@chef1.name)
 
       end
@@ -38,6 +38,28 @@ RSpec.describe 'Chef show page' do
           expect(page).to have_content(@dish2.name)
           expect(page).to have_content(@dish2.description)
         end
+      end
+
+      it "Shows see the name and calories of all ingredients this chef uses in their dishes. no duplicates" do
+        within ".dish-ingredients" do
+          expect(page).to have_content(@ingredient1.name)
+          expect(page).to have_content(@ingredient2.name)
+          expect(page).to have_content(@ingredient4.name)
+          expect(page).to_not have_content(@ingredient3.name)
+        end
+      end
+
+
+      it "And I see that the list of ingredients is ordered from most calories to least calories" do
+        expect(@ingredient2.name).to appear_before(@ingredient1.name)
+        expect(@ingredient1.name).to appear_before(@ingredient4.name)
+
+      end
+
+      it "next to each dish I see a button to remove it from this chef" do
+      end
+
+      it "I click this button, am returned to chefs show page, and i no longer see dish listed" do
       end
     end
   end

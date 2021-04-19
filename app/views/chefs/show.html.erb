@@ -4,5 +4,16 @@
 <% @chef.dishes.each do |dish| %>
 <section class="dish-<%= dish.id %>">
 <%= dish.name %> - <%= dish.description %><br>
+
 </section>
 <% end %>
+
+<h3>Names and Calories of ingredients in their Dishes</h3>
+<section class= "dish-ingredients">
+  <h3>Ingredients:</h3>
+  <% @chef.uniq_ingredients.each do |ingredient| %>
+  <div id="ingredient-<%= ingredient.id %>">
+      <p>Ingredient: <%= ingredient.name %> - Calories: <%= ingredient.calories %></p>
+  </div>
+  <% end %>
+</section>

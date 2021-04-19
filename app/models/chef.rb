@@ -4,4 +4,7 @@ class Chef <ApplicationRecord
   has_many :recipes, through: :dishes
   has_many :ingredients, through: :recipes
 
+  def uniq_ingredients
+    ingredients.order(calories: :desc).uniq
+  end
 end
