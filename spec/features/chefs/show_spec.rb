@@ -69,8 +69,6 @@ RSpec.describe 'the chef show page' do
         expect(@ingredient_4.name).to appear_before(@ingredient_2.name)
         expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
         expect(@ingredient_3.name).to appear_before(@ingredient_4.name)
-
-        # add test for uniqueness of ingredient list
       end
     end
   end

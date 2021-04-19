@@ -1,0 +1,18 @@
+<h2><%= @chef.name %></h2>
+
+<section id="dishes">
+  <h3>Dishes</h3>
+  <% @chef.dishes.each do |dish| %>
+      <h4> <%= dish.name %> </h4>
+      <p> <%= dish.description %> </p>
+  <% end %>
+</section>
+<br>
+<section id="ingredients">
+  <h4>Ingredients:</h4>
+  <% @chef.uniq_ingredients_calories_descending.each do |ingredient| %>
+  <ul>
+    <li> <%= ingredient.name %> - <%= ingredient.calories %></li>
+  </ul>
+  <% end %>
+</section>
