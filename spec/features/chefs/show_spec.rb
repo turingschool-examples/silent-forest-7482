@@ -27,26 +27,18 @@ RSpec.describe 'the chef show page' do
 
 
   it 'lists the chef' do
-    visit "/chefs/#{@movie_1.id}"
+    visit "/chefs/#{@chef_1.id}"
 
-      expect(page).to have_content(@movie_1.title)
-      expect(page).to have_content(@movie_1.creation_year)
-      expect(page).to have_content(@movie_1.genre)
-      expect(page).to have_content(@actor_1.name)
-      expect(page).to have_content(@actor_2.name)
-      expect(page).to have_content(@actor_3.name)
-      expect(page).to have_content(@actor_4.name)
+      expect(page).to have_content(@chef_1.name)
   end
 
-  # it "an actor can be searched for and added to a movie" do
-  #     visit "/movies/#{@movie_2.id}"
-  #     expect(page).to have_button("Search")
-  #
-  #     fill_in "Add an Actor to this Movie", with: "Ben Stiller"
-  #
-  #     click_button 'Search'
-  #
-  #     expect(page).to have_content(@actor_3.name)
-  #
-  #   end
+  it 'lists all dishes for the chef' do
+    visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@dish_2.name)
+      expect(page).to have_content(@dish_1.description)
+      expect(page).to have_content(@dish_2.description)
+  end
+
 end
