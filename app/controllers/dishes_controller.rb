@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  def destroy
+  def update
     dish = Dish.find(params[:id])
     old_chef = dish.chef
     dish.remove_from_chef
