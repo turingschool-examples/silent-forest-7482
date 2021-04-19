@@ -60,6 +60,32 @@ RSpec.describe "when i visit a chef show page" do
       expect(page).to have_content("#{dish_1.description}")
       expect(page).to have_content("#{dish_2.description}")
     end
+
+    it ":has remove button" do
+      chef_a = Chef.create!(name: "albert")
+      chef_b = Chef.create!(name: "bob")
+
+      dish_1 = chef_a.dishes.create!(name: "a1 barbique", description: "hot and spicy")
+      dish_2 = chef_a.dishes.create!(name: "abc soop", description: "words words words")
+      dish_3 = chef_a.dishes.create!(name: "bee honey tea", description: "fancy stuff")
+      dish_4 = chef_b.dishes.create!(name: "beverage supprize", description: "it's a supprize")
+
+
+
+      visit "/chefs/#{chef_a.id}"
+
+      expect(page).to have_content("#{dish_1.name}")
+      expect(page).to have_content("#{dish_2.name}")
+      expect(page).to have_content("#{dish_3.name}")
+
+      click_on("Remove #{dish_2.name}")
+
+      expect(page).to have_current_path("/chefs/#{chef_a.id}")
+
+      expect(page).to have_content("#{dish_1.name}")
+      expect(page).to have_no_content("#{dish_2.name}")
+      expect(page).to have_content("#{dish_3.name}")
+    end
   end
 
 

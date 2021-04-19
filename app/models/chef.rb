@@ -10,4 +10,6 @@ class Chef <ApplicationRecord
       .order(:calories).uniq
       # .group('ingredient.id')
   end
+
+  
 end

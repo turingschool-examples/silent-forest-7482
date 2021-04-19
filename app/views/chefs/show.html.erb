@@ -4,12 +4,13 @@
 <% @chef.dishes.each do |dish| %>
   <%= dish.name %>
   <%= dish.description %>
+  <%= link_to "Remove #{dish.name}", "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+
   </br>
 <% end %>
 </br>
 </br>
 </br>
-<%= @ingredients %>
 
 
 </br>
