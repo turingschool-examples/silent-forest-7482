@@ -38,11 +38,12 @@ RSpec.describe 'chef show page' do
     ingredient3 = dish1.ingredients.create!(name: "potato", calories: 30)
 
     visit "/chefs/#{chef.id}"    
-    save_and_open_page
+    
     within("#chef_ingredients") do
         expect(page).to have_content(ingredient1.name.capitalize)
         expect(page).to have_content(ingredient1.calories)
-
+        
+        expect(page).to have_content(ingredient2.name.capitalize)
         expect(page).to have_content(ingredient2.calories)
 
         expect(page).to have_content(ingredient3.name.capitalize)
@@ -58,5 +59,22 @@ RSpec.describe 'chef show page' do
         expect(page).to have_content(ingredient6.calories)
     end
   end
-  it 'has ordered the list of ingredients from most calories to least'
+
+  it 'has ordered the list of ingredients from most calories to least' do
+    chef = Chef.create!(name: "Anthony")
+    dish1 = chef.dishes.create!(name: "Yum", description: "Very yum")
+    dish2 = chef.dishes.create!(name: "Tasty", description: "Very tasty")
+    ingredient2 = dish1.ingredients.create!(name: "carrot", calories: 20)
+    ingredient1 = dish1.ingredients.create!(name: "onion", calories: 10)
+    ingredient5 = dish2.ingredients.create!(name: "butter", calories: 50)
+    ingredient4 = dish2.ingredients.create!(name: "garlic", calories: 40)
+    ingredient3 = dish1.ingredients.create!(name: "potato", calories: 30)
+
+    visit "/chefs/#{chef.id}"
+    save_and_open_page
+    expect(ingredient5.name.capitalize).to appear_before(ingredient4.name.capitalize)
+    expect(ingredient4.name.capitalize).to appear_before(ingredient3.name.capitalize)
+    expect(ingredient3.name.capitalize).to appear_before(ingredient2.name.capitalize)
+    expect(ingredient2.name.capitalize).to appear_before(ingredient1.name.capitalize)
+  end
 end
