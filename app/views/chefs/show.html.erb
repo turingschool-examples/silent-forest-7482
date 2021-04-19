@@ -4,6 +4,7 @@
 <% @chef.dishes.each do |dish| %>
 <section class="dish-<%= dish.id %>">
 <%= dish.name %> - <%= dish.description %><br>
+<%= button_to 'Remove Dish', chef_dish_path(@chef, dish), method: :delete %>
 
 </section>
 <% end %>
@@ -15,5 +16,13 @@
   <div id="ingredient-<%= ingredient.id %>">
       <p>Ingredient: <%= ingredient.name %> - Calories: <%= ingredient.calories %></p>
   </div>
+  <% end %>
+</section>
+
+
+<section class="popular-ingredients">
+  <h3>3 Most Popular Ingredients</h3>
+  <% @chef.top_3_ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %></p>
   <% end %>
 </section>
