@@ -14,7 +14,6 @@ RSpec.describe 'chef show page', type: :feature do
     DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_2)
     DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_1)
     DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_3)
-    DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_3)
     DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_3)
     DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_4)
     visit chef_path(@chef.id)
@@ -59,4 +58,19 @@ RSpec.describe 'chef show page', type: :feature do
 
     expect(page).not_to have_content(@dish_1.name)
   end
+
+  # it 'can show 3 most popular ingredients for the chef' do
+  #   @ingredient_5 = Ingredient.create!(name: 'basil', calories: 5)
+  #   DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_5)
+  #   DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_5)
+  #   DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_5)
+  #
+  #   within(".most-popular-ingredients") do
+  #     expect(page).to have_content(@ingredient_5.name)
+  #     expect(page).to have_content(@ingredient_1.name)
+  #     expect(page).to have_content(@ingredient_3.name)
+  #     expect(page).not_to have_content(@ingredient_2.name)
+  #     expect(page).not_to have_content(@ingredient_4.name)
+  #   end
+  # end
 end

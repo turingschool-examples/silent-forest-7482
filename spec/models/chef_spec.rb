@@ -32,5 +32,30 @@ RSpec.describe Chef, type: :model do
         expect(@chef.unique_ingredients_ordered_by_calories[1].calories). to eq(@ingredient_2.calories)
       end
     end
+
+    # describe '.most_popular_ingredients' do
+    #   it 'can find 3 most used ingredients' do
+    #     @chef = Chef.create!(name: 'Gordan Ramsay')
+    #     @dish_1 = @chef.dishes.create!(name: 'Spaghetti', description: 'delicious pasta')
+    #     @dish_2 = @chef.dishes.create!(name: 'Margarita Pizza', description: 'I love pizza')
+    #     @dish_3 = @chef.dishes.create!(name: 'Fish Taco', description: 'Taco Tuesday')
+    #     @ingredient_1 = Ingredient.create!(name: 'tomato sauce', calories: 50)
+    #     @ingredient_2 = Ingredient.create!(name: 'pasta', calories: 300)
+    #     @ingredient_3 = Ingredient.create!(name: 'cheese', calories: 200)
+    #     @ingredient_4 = Ingredient.create!(name: 'fish', calories: 350)
+    #     @ingredient_5 = Ingredient.create!(name: 'basil', calories: 5)
+    #     DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_1)
+    #     DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_2)
+    #     DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_1)
+    #     DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_3)
+    #     DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_3)
+    #     DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_4)
+    #     DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_5)
+    #     DishIngredient.create!(dish: @dish_2, ingredient: @ingredient_5)
+    #     DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_5)
+    #
+    #     expect(@chef.most_popular_ingredients).to eq([@ingredient_5, @ingredient_1, @ingredient_3])
+    #   end
+    # end
   end
 end

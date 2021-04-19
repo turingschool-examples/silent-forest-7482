@@ -12,3 +12,10 @@
 <% @chef.unique_ingredients_ordered_by_calories.each do |ingredient| %>
   <p>Ingredient: <%= ingredient.name %> Calories: <%= ingredient.calories %></p>
 <% end %>
+
+<div class="most-popular-ingredients">
+  <h3>Most Popular Ingredients</h3>
+  <% @chef.most_popular_ingredients.each do |ingredient| %>
+    <p>* <%= ingredient.name %></p>
+  <% end %>
+</div>
