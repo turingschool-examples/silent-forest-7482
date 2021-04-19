@@ -27,7 +27,7 @@ RSpec.describe Ingredient, type: :model do
 
   describe "class methods" do
     it 'orders ingredients by calories greatest to smallest' do
-      binding.pry
+
       expect(Ingredient.order_by_cal).to eq([@ingredient_5,@ingredient_4,@ingredient_6,@ingredient_1,@ingredient_3,@ingredient_2])
     end
   end

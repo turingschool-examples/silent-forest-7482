@@ -10,3 +10,11 @@
   <p>Dish Description:<%=dish.description%><p>
   </section>
 <%end%>
+
+<h2>Chef's Ingredients</h2>
+<%@ingredients.sort_by_cal.each do |ingredient|%>
+  <section id ="ingredient-<%=ingredient.id%>">
+  <p>Ingredient Name:<%=ingredient.name%><p>
+  <p>Ingredeient Calories:<%=ingredient.calories%><p>
+  </section>
+<%end%>
