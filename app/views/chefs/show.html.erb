@@ -1,0 +1,7 @@
+<%= @chef.name %>
+
+
+<% @chef.dishes.each do |dish| %>
+  <%= dish.name %>
+  <%= dish.description %>
+<% end %>

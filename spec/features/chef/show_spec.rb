@@ -27,7 +27,7 @@ RSpec.describe "when i visit a chef show page" do
 
     visit "/chefs/#{chef_a.id}"
 
-    expect(page).to have_content("#{chef.name}")
+    expect(page).to have_content("#{chef_a.name}")
   end
 
   describe "i see a list of that chef's dishes" do
