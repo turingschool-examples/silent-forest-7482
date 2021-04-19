@@ -71,10 +71,37 @@ RSpec.describe 'chef show page' do
     ingredient3 = dish1.ingredients.create!(name: "potato", calories: 30)
 
     visit "/chefs/#{chef.id}"
-    save_and_open_page
+    
     expect(ingredient5.name.capitalize).to appear_before(ingredient4.name.capitalize)
     expect(ingredient4.name.capitalize).to appear_before(ingredient3.name.capitalize)
     expect(ingredient3.name.capitalize).to appear_before(ingredient2.name.capitalize)
     expect(ingredient2.name.capitalize).to appear_before(ingredient1.name.capitalize)
+  end
+  describe 'each dish has a button to delete the dish' do
+    it 'has a button next to each dish to delete the dish' do
+      chef = Chef.create!(name: "Anthony")
+      dish1 = chef.dishes.create!(name: "Yum", description: "Very yum")
+      dish2 = chef.dishes.create!(name: "Tasty", description: "Very tasty")
+
+      visit "/chefs/#{chef.id}"
+      
+      within("#chef_dishes") do
+        within("#dish-#{dish1.id}") do
+          expect(page).to have_button("Delete Dish")
+          click_button("Delete Dish")
+          expect(current_path).to eq("/chefs/#{chef.id}")
+        end
+        expect(page).to_not have_content("#{dish1.name}")
+        expect(page).to_not have_content("#{dish1.description}")
+        
+        within("#dish-#{dish2.id}") do
+          expect(page).to have_button("Delete Dish")
+          click_button("Delete Dish")
+          expect(current_path).to eq("/chefs/#{chef.id}")
+        end
+        expect(page).to_not have_content("#{dish2.name}")
+        expect(page).to_not have_content("#{dish2.description}")
+      end
+    end
   end
 end

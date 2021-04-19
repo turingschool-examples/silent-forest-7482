@@ -5,8 +5,9 @@
   <% @chef.dishes.each do |dish| %>
     <section id="dish-<%= dish.id %>">
       <%= dish.name %><br>
-      <%= dish.description %><br><br>
-    <section>
+      <%= dish.description %>
+      <%= button_to "Delete Dish", "/dishes/#{dish.id}", method: :delete %><br>
+    </section>
   <% end %>
 </section>
 
