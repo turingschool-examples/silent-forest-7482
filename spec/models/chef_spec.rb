@@ -33,5 +33,12 @@ RSpec.describe Chef, type: :model do
       expect(@chef_1.uniq_ingredients_calories_descending.first.name).to eq(@ingredient_2.name)
       expect(@chef_1.uniq_ingredients_calories_descending.last.name).to eq(@ingredient_1.name)
     end
+
+    it "#most_popular_ingredients" do
+      expected = [@ingredient_3.name, @ingredient_1.name, @ingredient_3.name]
+
+      expect(@chef_1.most_popular_ingredients.first).to eq(@ingredient_3.name)
+      expect(@chef_1.most_popular_ingredients.last).to eq(@ingredient_1.name)
+    end
   end
 end
