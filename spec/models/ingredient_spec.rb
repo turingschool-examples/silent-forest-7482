@@ -7,7 +7,7 @@ RSpec.describe Ingredient, type: :model do
     it {should validate_numbericality_of :calories}
   end
   describe "relationships" do
-    it {should belong_to :dish}
-    it {should have_many :dishes}
+    it {should have_many (:dish_ingredients)}
+    it {should has_many (:dishs), through(:dish_ingredients)}
   end
 end
