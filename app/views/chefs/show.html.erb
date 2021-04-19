@@ -16,8 +16,8 @@
 <div class="ingredients-describe">
   <h3>ingredients:</h3>
   <ul>
-    <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %> <%= ingredient.calories %></li>
+    <% @chef.ingredients.distinct.each do |ingredient| %>
+    <li><%= ingredient.name %>--CALORIES:  <%= ingredient.calories %></li>
     <% end %>
   </ul>
 </div>

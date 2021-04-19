@@ -6,6 +6,7 @@ RSpec.describe Chef, type: :model do
   end
   describe "relationships" do
     it {should have_many :dishes}
+    it {should have_many :ingredients}
   end
 
   describe "instance methods" do
@@ -19,9 +20,9 @@ RSpec.describe Chef, type: :model do
       @dish_1.ingredients << [@ingredient_1, @ingredient_2, @ingredient_3]
       @dish_2.ingredients << [@ingredient_2, @ingredient_3]
     end
-    describe "#dishes_ingredients" do
+    describe "#ingredients_distinct" do
       it "returns the unique ingredients of a chefs dishes" do
-        expect(@chef.dishes_ingredients).to eq([@ingredient_1, @ingredient_2, @ingredient_3])
+        expect(@chef.ingredients.distinct).to eq([@ingredient_1, @ingredient_2, @ingredient_3])
       end
     end
   end
