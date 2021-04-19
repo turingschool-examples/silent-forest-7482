@@ -10,10 +10,11 @@ RSpec.describe "Chef Show Page" do
 
   it 'shows the chefs attributes' do
     expect(page).to have_content(@chef.name)
-    expect(page).to have_content("#{@chef.name}'s Dishes")
+    expect(page).to have_content("#{@chef.name}'s Dishes:")
     expect(page).to have_content(@chicken.name)
     expect(page).to have_content(@chicken.description)
     expect(page).to have_content(@mashed_potatoes.name)
     expect(page).to have_content(@mashed_potatoes.description)
+    save_and_open_page
   end
 end
