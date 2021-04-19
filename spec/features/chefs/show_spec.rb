@@ -13,7 +13,7 @@ RSpec.describe 'the chef show page' do
     @ingredient_2 = Ingredient.create!(name: 'Cheese', calories: 100)
     @ingredient_3 = Ingredient.create!(name: 'Potato', calories: 300)
     @ingredient_4 = Ingredient.create!(name: 'Tortilla chips', calories: 250)
-    @ingredient_5 = Ingredient.create!(name: 'Chili', calories: 200)
+    @ingredient_5 = Ingredient.create!(name: 'Chili', calories: 400)
 
     @dish_ingredient_1 = DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_1)
     @dish_ingredient_1 = DishIngredient.create!(dish: @dish_1, ingredient: @ingredient_2)
@@ -26,19 +26,30 @@ RSpec.describe 'the chef show page' do
   end
 
 
-  it 'lists the chef' do
+  it 'us1 lists the chef' do
     visit "/chefs/#{@chef_1.id}"
 
       expect(page).to have_content(@chef_1.name)
   end
 
-  it 'lists all dishes for the chef' do
+  it 'us1 lists all dishes and their descriptions for the chef' do
     visit "/chefs/#{@chef_1.id}"
 
+      expect(page).to have_content("Dishes:")
       expect(page).to have_content(@dish_1.name)
       expect(page).to have_content(@dish_2.name)
       expect(page).to have_content(@dish_1.description)
       expect(page).to have_content(@dish_2.description)
+  end
+
+  it 'us2 lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
+    visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content("Chefs Ingredients:")
+      expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_2.name)
+      expect(page).to have_content(@ingredient_1.calories)
+      expect(page).to have_content(@ingredient_2.calories)
   end
 
 end

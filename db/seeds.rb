@@ -22,7 +22,7 @@ ingredient_1 = Ingredient.create!(name: 'Tortilla', calories: 200)
 ingredient_2 = Ingredient.create!(name: 'Cheese', calories: 100)
 ingredient_3 = Ingredient.create!(name: 'Potato', calories: 300)
 ingredient_4 = Ingredient.create!(name: 'Tortilla chips', calories: 250)
-ingredient_5 = Ingredient.create!(name: 'Chili', calories: 200)
+ingredient_5 = Ingredient.create!(name: 'Chili', calories: 400)
 
 dish_ingredient_1 = DishIngredient.create!(dish: dish_1, ingredient: ingredient_1)
 dish_ingredient_1 = DishIngredient.create!(dish: dish_1, ingredient: ingredient_2)
