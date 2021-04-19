@@ -12,8 +12,12 @@ RSpec.describe "Chef Show Page" do
         @ingredient_1 = Ingredient.create!(name: 'tomato', calories: 45)
         @ingredient_2 = Ingredient.create!(name: 'flour', calories: 95)
         @ingredient_3 = Ingredient.create!(name: 'pepperoni', calories: 60)
+        @ingredient_4 = Ingredient.create!(name: 'sausage', calories: 80)
+        @ingredient_5 = Ingredient.create!(name: 'carrot', calories: 30)
+        @ingredient_6 = Ingredient.create!(name: 'chili', calories: 25)
         @dish_1.ingredients << [@ingredient_1, @ingredient_2, @ingredient_3]
-        @dish_2.ingredients << [@ingredient_2, @ingredient_3]
+        @dish_2.ingredients << [@ingredient_2, @ingredient_3, @ingredient_4, @ingredient_5]
+        @dish_3.ingredients << [@ingredient_5, @ingredient_6]
         visit chef_path(@chef)
       end
 
@@ -53,6 +57,17 @@ RSpec.describe "Chef Show Page" do
           expect(page).to_not have_content("Remove #{@dish_1.id}")
         end
       end
+
+      # describe "I see a section for most popular ingredients" do
+        # it "I see the three most popular ingredients that the chef uses" do
+        #   within ".popular-ingredients" do
+        #     expect(page).to have_content(@ingredient_2)
+        #     expect(page).to have_content(@ingredient_3)
+        #     expect(page).to have_content(@ingredient_5)
+        #     expect(page).to_not have_content(@ingredient_6)
+        #   end
+        # end
+      # end
     end
   end
 
