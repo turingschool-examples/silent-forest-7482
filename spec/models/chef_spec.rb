@@ -30,7 +30,8 @@ RSpec.describe Chef, type: :model do
     it "#uniq_ingredients_calories_descending" do
       expected = [@ingredient_2, @ingredient_3, @ingredient_1]
 
-      expect(@chef_1.uniq_ingredients_calories_descending.to_a).to eq(expected)
+      expect(@chef_1.uniq_ingredients_calories_descending.first.name).to eq(@ingredient_2.name)
+      expect(@chef_1.uniq_ingredients_calories_descending.last.name).to eq(@ingredient_1.name)
     end
   end
 end

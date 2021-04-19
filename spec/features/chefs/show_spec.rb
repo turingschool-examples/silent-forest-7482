@@ -44,8 +44,8 @@ RSpec.describe 'the chef show page' do
       expect(page).to have_content(@dish_2.name)
       expect(page).to have_content(@dish_2.description)
 
-      expect(page).to_not have_content(@dish_2.name)
-      expect(page).to_not have_content(@dish_2.description)
+      expect(page).to_not have_content(@dish_3.name)
+      expect(page).to_not have_content(@dish_3.description)
     end
   end
 
@@ -68,7 +68,7 @@ RSpec.describe 'the chef show page' do
 
         expect(@ingredient_4.name).to appear_before(@ingredient_2.name)
         expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
-        expect(@ingredient_3.name).to appear_before(@ingredient_4.name)
+        expect(@ingredient_3.name).to appear_before(@ingredient_1.name)
       end
     end
   end
