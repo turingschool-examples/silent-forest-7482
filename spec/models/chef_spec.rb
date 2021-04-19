@@ -19,6 +19,7 @@ RSpec.describe Chef, type: :model do
       Recipe.create!(dish: @dish_1, ingredient: @ing_1)
       Recipe.create!(dish: @dish_1, ingredient: @ing_2)
       Recipe.create!(dish: @dish_2, ingredient: @ing_3)
+      Recipe.create!(dish: @dish_2, ingredient: @ing_1)
     end
 
     describe "#ingredient_calories_list" do

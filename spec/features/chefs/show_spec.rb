@@ -29,12 +29,22 @@ RSpec.describe 'the chefs show page' do
   it 'displays a list of ingredients used in dishes from most calories to least' do
     visit "/chefs/#{@chef_1.id}"
 
-    expect(page).to have_content(@chef_1.ingredient_calories_list)
     expect(page).to have_content(@ing_1.name)
     expect(page).to have_content(@ing_1.calories)
     expect(page).to have_content(@ing_2.name)
     expect(page).to have_content(@ing_2.calories)
     expect(page).to have_content(@ing_3.name)
     expect(page).to have_content(@ing_3.calories)
+  end
+
+  it 'allows the user to delete a dish' do
+    visit "/chefs/#{@chef_1.id}"
+
+    expect(page).to have_content("Alfredo")
+
+    within "#dish-#{@dish_1.id}" do
+      click_button("Delete")
+      expect(page).to_not have_content("Alfredo")
+    end
   end
 end
