@@ -26,13 +26,13 @@ RSpec.describe 'the chef show page' do
   end
 
 
-  it 'us1 lists the chef' do
+  it 'us1 - lists the chef' do
     visit "/chefs/#{@chef_1.id}"
 
       expect(page).to have_content(@chef_1.name)
   end
 
-  it 'us1 lists all dishes and their descriptions for the chef' do
+  it 'us1 - lists all dishes and their descriptions for the chef' do
     visit "/chefs/#{@chef_1.id}"
 
       expect(page).to have_content("Dishes:")
@@ -42,7 +42,7 @@ RSpec.describe 'the chef show page' do
       expect(page).to have_content(@dish_2.description)
   end
 
-  it 'us2 lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
+  it 'us2 - lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
     visit "/chefs/#{@chef_1.id}"
 
       expect(page).to have_content("Chefs Ingredients:")
@@ -52,4 +52,13 @@ RSpec.describe 'the chef show page' do
       expect(page).to have_content(@ingredient_2.calories)
   end
 
+  it 'us3 - lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
+    visit "/chefs/#{@chef_1.id}"
+
+    expect(page).to have_content(@dish_1.name)
+    click_button "Remove #{@dish_1.name} from Chef"
+
+    expect(page).to have_current_path("/chefs/#{@chef_1.id}")
+    expect(page).to_not have_content(@dish_1.name)
+  end
 end

@@ -1,18 +1,8 @@
 class DishesController < ApplicationController
 
-  def show
-    @dish = Dish.find(params[:id])
-    # if params[:search].present?
-    #   @actor = Actor.search(params[:search])
-    # end
+  def destroy
+    Dish.destroy(params[:id])
+
+    redirect_to '/chefs/chef_id'
   end
-  #
-  # def update
-  #   @movie = Movie.find(params[:id])
-  #   if params[:search].present?
-  #     @actor = Actor.search(params[:search])
-  #     MovieActor.create(movie: @movie, actor: @actor[0])
-  #   end
-  #   render :show
-  # end
 end

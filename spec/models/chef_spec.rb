@@ -36,8 +36,10 @@ RSpec.describe Chef, type: :model do
   describe "instance methods" do
     describe "#ingredients_for_show" do
       it 'orders chef ingredients by calories and removes duplicates' do
-        #Could not figure out formatting
-        #expect(@chef_1.ingredients_for_show).to eq([@ingredient_5, @ingredient_4, @ingredient_1, @ingredient_2])
+        expect(@chef_1.ingredients_for_show[0].name).to eq('Chili')
+        expect(@chef_1.ingredients_for_show[1].name).to eq('Tortilla chips')
+        expect(@chef_1.ingredients_for_show[2].name).to eq('Tortilla')
+        expect(@chef_1.ingredients_for_show[3].name).to eq('Cheese')
       end
     end
   end

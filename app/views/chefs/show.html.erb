@@ -1,10 +1,9 @@
 <h3><%= @chef.name %></h3>
 <h4>Dishes:</h4>
 <% @chef.dishes.each do |dish| %>
-  <p><%= dish.name %>, Description: <%= dish.description %></p>
+  <p><%= dish.name %>, Description: <%= dish.description %>
+  <%=  button_to "Remove #{dish.name} from Chef", "/dishes/#{dish.id}", method: :delete, :chef_id :#{@chef.id} %></p>
 <% end %>
-
-
 
 <h4>Chefs Ingredients:</h4>
 <% @chef.ingredients_for_show.each do |ingredient| %>
