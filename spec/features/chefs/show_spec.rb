@@ -16,5 +16,11 @@ RSpec.describe 'Chef' do
     it 'shows the name of the chef' do
       expect(page).to have_content(@chef1.name)
     end
+
+    it 'shows names and descriptions of all the chefs dishes' do
+      expect(page).to have_content(@dish1.name)
+      expect(page).to have_content(@dish2.description)
+      expect(page).not_to have_content(@dish3.name)
+    end
   end
 end
