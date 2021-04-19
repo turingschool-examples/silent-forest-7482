@@ -20,10 +20,5 @@ RSpec.describe Chef, type: :model do
       @dish_1.ingredients << [@ingredient_1, @ingredient_2, @ingredient_3]
       @dish_2.ingredients << [@ingredient_2, @ingredient_3]
     end
-    describe "#ingredients_distinct" do
-      it "returns the unique ingredients of a chefs dishes" do
-        expect(@chef.ingredients.distinct).to eq([@ingredient_1, @ingredient_2, @ingredient_3])
-      end
-    end
   end
 end

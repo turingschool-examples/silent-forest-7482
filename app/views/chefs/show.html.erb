@@ -8,7 +8,12 @@
   <h3>Dishes:</h3>
   <ul>
     <% @chef.dishes.each do |dish| %>
-    <li><%= dish.name %>---DESCRIPTION: <%= dish.description %></li>
+    <li>
+      <%= dish.name %>---DESCRIPTION: <%= dish.description %>
+      <div id="dish-<%="#{dish.id}"%> "style="display:inline-block;">
+        <%= button_to "Remove #{dish.id}", chef_path(@chef, dish.id), method: :patch %>
+      </div>
+    </li>
     <% end %>
   </ul>
 </div>

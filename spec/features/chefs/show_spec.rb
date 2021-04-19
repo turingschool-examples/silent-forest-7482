@@ -8,6 +8,7 @@ RSpec.describe "Chef Show Page" do
         @dish_1 = Dish.create!(name: 'lasagna', description: 'vegan with red sauce', chef_id: @chef.id)
         @dish_2 = Dish.create!(name: 'pizza', description: 'cheese and pepperoni', chef_id: @chef.id)
         @dish_3 = Dish.create!(name: 'steak', description: 'filet with pepper sauce', chef_id: @chef.id)
+        @dish_4 = Dish.create!(name: 'shrimp', description: 'boiled and seasoned')
         @ingredient_1 = Ingredient.create!(name: 'tomato', calories: 45)
         @ingredient_2 = Ingredient.create!(name: 'flour', calories: 95)
         @ingredient_3 = Ingredient.create!(name: 'pepperoni', calories: 60)
@@ -41,6 +42,15 @@ RSpec.describe "Chef Show Page" do
           expect(page).to have_content(@ingredient_3.calories)
           expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
           expect(@ingredient_3.name).to appear_before(@ingredient_1.name)
+        end
+      end
+
+      context "I see a button next to each dish to remove it from this chef" do
+        it "When I click this button I am returned to the chefs show page" do
+          expect(page).to have_button('Remove')
+          click_on "Remove #{@dish_1.id}"
+          expect(current_path).to eq(chef_path(@chef))
+          expect(page).to_not have_content("Remove #{@dish_1.id}")
         end
       end
     end
