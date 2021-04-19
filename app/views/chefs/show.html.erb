@@ -1,7 +1,21 @@
 <%= @chef.name %>
 
-
+</br>
 <% @chef.dishes.each do |dish| %>
   <%= dish.name %>
   <%= dish.description %>
+  </br>
+<% end %>
+</br>
+</br>
+</br>
+<%= @ingredients %>
+
+
+</br>
+<% @ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= " : " %>
+  <%= ingredient.calories %>
+  </br>
 <% end %>
