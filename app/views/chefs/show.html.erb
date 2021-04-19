@@ -2,7 +2,11 @@
 
 <h2> Dishes:
 <% @chef.dishes.each do |dish| %>
-<%= dish.name %>, <%= dish.description %>
+<div id="delete-<%= dish.id %>">
+<%= dish.name %>
+<%= dish.description %>
+<%= button_to "remove from chef", dish_path(dish, chef_id: @chef.id), method: :delete %>
+</div>
 <% end %>
 </h2>
 

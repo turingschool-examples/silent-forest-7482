@@ -43,4 +43,24 @@ RSpec.describe 'the chef show' do
     expect(@ingredient_1.name).to appear_before(@ingredient_2.name)
     expect(@ingredient_2.name).to appear_before(@ingredient_3.name)
   end
+
+  it "clicks button to remove dish from chef and redirects to show no longer displaying that dish" do
+    visit "/chefs/#{@chef.id}"
+
+    within "#delete-#{@dish_1.id}" do
+      expect(page).to have_button("remove from chef")
+    end
+
+    within "#delete-#{@dish_2.id}" do
+      expect(page).to have_button("remove from chef")
+    end
+
+    within "#delete-#{@dish_3.id}" do
+      expect(page).to have_button("remove from chef")
+      click_button("remove from chef")
+    end
+
+    expect(page).to have_current_path("/chefs/#{@chef.id}")
+    expect(page).to_not have_content(@dish_3.name)
+  end
 end
