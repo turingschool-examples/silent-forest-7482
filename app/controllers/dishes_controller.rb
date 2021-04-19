@@ -1,6 +1,7 @@
 class DishesController < ApplicationController
   def index
-    @dishes = Dish.all
+    @chief = Chief.find(params[:chief_id])
+    @dishes = @chief.dishes
   end
 
   def show
