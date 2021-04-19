@@ -13,6 +13,9 @@ RSpec.describe 'the chef show' do
     @ingredient_3 = @dish_3.ingredients.create!(name: 'Salt and pepper', calories: 10)
 
     DishesIngredient.create!(dish: @dish_1, ingredient: @ingredient_1)
+    DishesIngredient.create!(dish: @dish_2, ingredient: @ingredient_1)
+    DishesIngredient.create!(dish: @dish_3, ingredient: @ingredient_1)
+    DishesIngredient.create!(dish: @dish_1, ingredient: @ingredient_2)
   end
 
 
@@ -62,5 +65,15 @@ RSpec.describe 'the chef show' do
 
     expect(page).to have_current_path("/chefs/#{@chef.id}")
     expect(page).to_not have_content(@dish_3.name)
+  end
+
+  it "text" do
+    visit "/chefs/#{@chef.id}"
+
+    expect(page).to have_content("Most Popular Ingredients:")
+
+    # And in that section I see the three most popular ingredients that the chef uses in their dishes
+    # (Note: Popularity is based off of how many dishes use that ingredient)
+    # (Note: You should only make 1 database query to calculate the most popular ingredients)
   end
 end

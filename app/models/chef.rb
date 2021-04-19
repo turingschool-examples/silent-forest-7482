@@ -9,4 +9,11 @@ class Chef <ApplicationRecord
     .pluck(:name, :calories)
     .flatten
   end
+
+  def self.top_3_ingredients
+    joins(dishes: :ingredients)
+    .group(:dish_name)
+    .order('count(*)')
+    .select('count(*) as ingredient_cnt, ingredients.*')
+  end
 end
