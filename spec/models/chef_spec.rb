@@ -25,7 +25,7 @@ RSpec.describe Chef, type: :model do
     describe "#ingredient_calories_list" do
       it 'returns a unique list of ingredients ordered from most to least calories' do
 
-      expect(@chef_1.ingredient_calories_list).to eq([@ing_3,@ing_2,@ing_1])
+      expect(@chef_1.ingredient_calories_list).to eq([@ing_3.name, @ing_3.calories, @ing_2.name, @ing_2.calories, @ing_1.name, @ing_1.calories])
       end
     end
   end
