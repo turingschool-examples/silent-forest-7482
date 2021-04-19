@@ -63,6 +63,17 @@ RSpec.describe 'chef show page' do
 			expect(page).to have_content(@ingredient_2.name)
 			expect(page).to have_content(@ingredient_2.calories)
 		end
+	end
+	it 'shows a button to delete a dish from the chef show page and when selected it no longer is displayed' do
+		visit "/chefs/#{@chef.id}"
 
+		within "#dish-#{@dish_1.id}" do 
+			expect(page).to have_button("Delete")
+			click_button('Delete')
+		end
+		current_path "/chefs/#{@chef.id}"
+		expect(page).to_no have_content(@dish_1.name)
 	end
 end
+
+<%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
