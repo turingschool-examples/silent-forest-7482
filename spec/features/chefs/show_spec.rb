@@ -47,7 +47,7 @@ describe 'chef show page' do
     end
 
     it 'shows all the ingredients are unique' do
-      expect(page).to have_css("ingredient", :count => 2)
+      expect(page).to have_css("div.ingredient", :count => 2)
     end
 
     it 'shows all the ingredients are ordered by calories desc' do
