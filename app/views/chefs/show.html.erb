@@ -11,5 +11,9 @@
 
 <div id='ingredients'>
   <h2>Ingredients:</h2>
-  <ul></ul>
+  <ul>
+    <% @ingredients.ingredients_by_chef(@chef).each do |ingredient| %>
+      <li><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
+    <% end %>
+  </ul>
 </div>
