@@ -77,7 +77,7 @@ User Story 3 - Destroy a Dish
 
 As a visitor
 When I visit a chef's show page
-Then next to each dish I see a button to remove it from this chef
+Then next to each dish I see a button to delete it
 When I click this button
 I am returned to the chef's show page
 And I no longer see the dish listed
