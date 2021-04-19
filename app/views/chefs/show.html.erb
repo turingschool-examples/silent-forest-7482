@@ -2,7 +2,10 @@
 
 <h2>Dishes</h2>
 <% @dishes.each do |dish| %>
-  <p>Name: <%= dish.name %> Description: <%= dish.description %></p>
+  <div id="dish-<%= dish.id %>">
+    <p>Name: <%= dish.name %> Description: <%= dish.description %></p>
+    <%= button_to 'Delete Dish', "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+  </div>
 <% end %>
 
 <h3>Ingredients Used:</h3>

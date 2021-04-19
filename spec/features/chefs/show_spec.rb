@@ -49,4 +49,14 @@ RSpec.describe 'chef show page', type: :feature do
     expect(@ingredient_4.name).to appear_before(@ingredient_1.name)
     expect(@ingredient_4.name).to appear_before(@ingredient_3.name)
   end
+
+  it 'can see button to delete dish and clicking button deletes dish from chefs dishes' do
+    expect(page).to have_content(@dish_1.name)
+
+    within("#dish-#{@dish_1.id}") do
+      click_button 'Delete Dish'
+    end
+
+    expect(page).not_to have_content(@dish_1.name)
+  end
 end
