@@ -1,0 +1,15 @@
+current directory: /Users/josephhaas/turing_mod_2/ic/silent-forest-7482/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+/Users/josephhaas/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20210419-20893-1le0hew.rb extconf.rb
+creating Makefile
+
+current directory: /Users/josephhaas/turing_mod_2/ic/silent-forest-7482/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/josephhaas/turing_mod_2/ic/silent-forest-7482/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/josephhaas/turing_mod_2/ic/silent-forest-7482/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20210419-20893-rvzche
