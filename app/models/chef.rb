@@ -7,4 +7,14 @@ class Chef <ApplicationRecord
   def uniq_ingredients
     ingredients.order(calories: :desc).uniq
   end
+
+#Most popular
+  def top_3_ingredients
+    ingredients
+    .select("ingredients.*, count(ingredients) as ingredient_count")
+    .group(:id)
+    .order(ingredient_count: :desc)
+    .limit(3)
+  end
+
 end

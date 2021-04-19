@@ -53,14 +53,33 @@ RSpec.describe 'Chef show page' do
       it "And I see that the list of ingredients is ordered from most calories to least calories" do
         expect(@ingredient2.name).to appear_before(@ingredient1.name)
         expect(@ingredient1.name).to appear_before(@ingredient4.name)
-
       end
 
-      it "next to each dish I see a button to remove it from this chef" do
+      it "next to each dish I see a button to remove the dish from this chef" do
+        within ".dish-#{@dish1.id}" do
+          expect(page).to have_button('Remove Dish')
+        end
+
+        within ".dish-#{@dish2.id}" do
+          expect(page).to have_button('Remove Dish')
+        end
       end
 
-      it "I click this button, am returned to chefs show page, and i no longer see dish listed" do
+      it "I click this button, I am returned to chefs show page, and i no longer see dish listed" do
+        within ".dish-#{@dish1.id}" do
+          expect(page).to have_button('Remove Dish')
+        end
+
+        within ".dish-#{@dish1.id}" do
+          click_button('Remove Dish')
+        end
+
+        expect(current_path).to eq(chef_path(@chef1))
+        expect(page).to_not have_content(@dish1.name)
       end
+
+      it "shows section for Most Popular Ingredients" do
+      end 
     end
   end
 end
