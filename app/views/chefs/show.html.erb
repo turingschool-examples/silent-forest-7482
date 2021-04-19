@@ -1,5 +1,11 @@
 <h1><%= @chef.name%></h1>
 
   <% @dishes.each do |dish| %>
-    <%= dish.name%> <%=dish.description%>
+    <h3>Dish: <%= dish.name%></h3> <%=dish.description%>
+    <%= button_to "Delete Dish", "/dishes/#{dish.id}", method: :delete%>
+  <%end%>
+
+  <h3>Recipe Ingredients</h3>
+  <% @ingredients.each do |ingredient| %>
+    <%= ingredient.name%>:<%=ingredient.calories%><br><br>
   <%end%>

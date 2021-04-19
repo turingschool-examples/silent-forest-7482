@@ -8,4 +8,10 @@ RSpec.describe Ingredient, type: :model do
   describe "relationships" do
     it {should have_many(:dishes).through(:recipes)}
   end
+
+  describe 'class method' do
+    before(:each) do
+      @flour = Ingredient.create(name: "flour", )
+    end
+  end
 end
