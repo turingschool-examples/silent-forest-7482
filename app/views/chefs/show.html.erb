@@ -1,6 +1,14 @@
 <h1>Chef Show Page</h1>
 
 <div class="chef-info">
-  <h2><%= @chef.name %></h2>
+  <h2>CHEF: <%= @chef.name %></h2>
+</div>
+
+<div class="dish-describe">
+  <ul>
+    <% @chef.dishes.each do |dish| %>
+    <li><%= dish.name %>---DESCRIPTION: <%= dish.description %></li>
+    <% end %>
+  </ul>
 
 </div>
