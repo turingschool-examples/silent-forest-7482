@@ -13,3 +13,11 @@
     <%= ingredient.calories %>
   </div>
 <% end %>
+
+<p>Most Popular Ingredients</p>
+<div class="most-popular-ingredients">
+  <% @dish_ingredients.most_popular(@chef).each do |ingredient| %>
+    <%= ingredient.name %>
+    <%= ingredient.calories %>
+  <% end %>
+</div>
