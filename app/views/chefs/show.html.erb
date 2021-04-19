@@ -1,8 +1,15 @@
 <h1><%= @chef.name %></h1>
 
-<h2>Dishes: </h2>
-<ul>
-  <% @chef.dishes.each do |dish| %>
-    <li><%= dish.name %> - <%= dish.description %></li>
-  <% end %>
-</ul>
+<div id='dishes'>
+  <h2>Dishes: </h2>
+  <ul>
+    <% @chef.dishes.each do |dish| %>
+      <li><%= dish.name %> - <%= dish.description %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id='ingredients'>
+  <h2>Ingredients:</h2>
+  <ul></ul>
+</div>
