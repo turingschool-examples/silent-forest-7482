@@ -4,10 +4,13 @@ class DishesController < ApplicationController
   # end
 
   def destroy
-    dish = Dish.find(params[:id])
-    dish.destroy
-
-    chef = Chef.find(params[:chef_id])
+    @chef = Chef.find_by(name: params[:name])
+    @dish = Dish.find(params[:id]).destroy
+    Recipe.where("id = ?", params[:chef_id] )
+    # dish = Dish.find(params[:id])
+    # dish.destroy
+    #
+    # chef = Chef.find(params[:chef_id])
     # @chef = Chef.find(params[:chef_id])
     # @dish = Dish.find(params[:id])
     #
