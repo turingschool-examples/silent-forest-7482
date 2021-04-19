@@ -15,7 +15,8 @@ RSpec.describe 'the chefs show page' do
     expect(page).to have_content(@chef_1.name)
     expect(page).to have_content(@alfredo.name)
     expect(page).to have_content(@alfredo.description)
-    expect(page).to_not have_content(@bob.name)
+    expect(page).to_not have_content(@chef_2.name)
     expect(page).to_not have_content(@bob_dish.description)
+    save_and_open_page
   end
 end

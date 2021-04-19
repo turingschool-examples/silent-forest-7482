@@ -1,0 +1,6 @@
+<h1><%="#{@chef.name}'s Dishes'"%></h1>
+<h3>Dish and descriptions</h3>
+<p><% @chef.dishes.each do |dish| %>
+  <p>Dish name: <%= dish.name %> </p>
+  <p>Description: <%= dish.description %> </p>
+<% end %>
