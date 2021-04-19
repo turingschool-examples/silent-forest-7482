@@ -3,3 +3,10 @@
   <%= dish.name %>
   <%= dish.description %>
 <% end %>
+
+<% @dish_ingredients.chef_ingredients(@chef).each do |ingredient| %>
+  <div class="ingredient">
+    <%= ingredient.name %>
+    <%= ingredient.calories %>
+  </div>
+<% end %>
