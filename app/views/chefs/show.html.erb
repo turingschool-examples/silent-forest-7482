@@ -7,4 +7,14 @@
   <% @dishes.each do |dish| %>
     <li><%= dish.name %>, <%= dish.description %></li>
   <% end %>
+</ul><br>
+
+<u>
+  <%= @chef.name %>'s Ingredients:
+</u><br>
+
+<ul>
+  <% @chef.ingredient_list.each do |ingredient| %>
+    <li class="ingredient"><%= ingredient.name %>, <%= ingredient.calories %></li>
+  <% end %>
 </ul>
