@@ -4,9 +4,8 @@ class ChefsController < ApplicationController
   end
 
   def destroy
-    @chef = Chef.find(params[:id])
     dish = Dish.find(params[:id])
-
+    recipe = Recipe.find(dish_id: dish.id)
     dish.destroy
     redirect_to "/chefs/#{@chef.id}"
   end
