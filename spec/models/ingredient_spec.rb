@@ -11,7 +11,18 @@ RSpec.describe Ingredient, type: :model do
 
   describe 'class method' do
     before(:each) do
-      @flour = Ingredient.create(name: "flour", )
+      @flour = Ingredient.create(name: "flour", calories: 40)
+      @flour1 = Ingredient.create(name: "flour", calories: 40)
+      @eggs = Ingredient.create(name: "eggs", calories: 90)
+      @butter = Ingredient.create(name: "butter", calories: 150)
     end
+
+  describe '::ingredients_used' do
+    it 'finde ingredients with distinct names, and calories by highest calorie' do
+      expect(Ingredient.ingredients_used).to eq([@butter, @eggs, @flour])
+      expect(Ingredient.ingredients_used).to_not eq([@flour1])
+    end
+  end
+
   end
 end

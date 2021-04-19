@@ -4,7 +4,8 @@ class Ingredient <ApplicationRecord
   has_many :dishes, through: :recipes
 
   def self.ingredients_used
-    select(:name).distinct
     order(calories: :desc)
+    .select('ingredients.*')
+    .distinct
   end
 end
