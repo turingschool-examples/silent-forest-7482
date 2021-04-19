@@ -23,7 +23,7 @@ RSpec.describe Ingredient, type: :model do
       ice_cream = ice_cream_dish.ingredients.create(name: "Ice Cream", calories: 650)
       thyme2 = ice_cream_dish.ingredients.create(name: "Thyme", calories: 1)
 
-      expect(Ingredient.unique_ingredients_ordered_from_highest_calories).to eq(["Ice Cream", "Salmon", "Butter", "Thyme"])
+      expect(Chef.unique_ingredients_ordered_from_highest_calories).to eq(["Ice Cream", "Salmon", "Butter", "Thyme"])
     end
   end
 end
