@@ -20,7 +20,7 @@ RSpec.describe Chef, type: :model do
         ingredient5 = dish2.ingredients.create!(name: "butter", calories: 50)
         ingredient4 = dish2.ingredients.create!(name: "garlic", calories: 40)
         ingredient3 = dish1.ingredients.create!(name: "potato", calories: 30)
-
+        
         expect(chef.ingredients).to eq({"butter"=>50, "garlic"=>40, "potato"=>30, "carrot"=>20, "onion"=>10})
       end
     end
