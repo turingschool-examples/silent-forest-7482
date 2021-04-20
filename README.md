@@ -54,33 +54,35 @@ Some of the initial migrations and model set up has been done for you. After you
 ## User Stories
 
 ```
-User Story 1 - Chef Show Page
+User Story 1 - Ingredient Show Page
 
 As a visitor
-When I visit a chef's show page
-Then I see the name of the chef
-And I see the names and descriptions of all the chef's dishes
+When I visit an ingredient's show page
+Then I see the name and calories of the ingredient
+And I see the names and descriptions of all dishes that include this ingredient
 ```
 
 ```
-User Story 2 - Chef's Ingredients
-
-As a visitor
-When I visit a chef's show page
-Then I see the name and calories of all ingredients this chef uses in their dishes
-And I see that the list of ingredients is unique (contains no duplicate ingredients)
-And I see that the list of ingredients is ordered from most calories to least calories
-```
-
-```
-User Story 3 - Destroy a Dish
+User Story 2 - Ingredient's Chefs
 
 As a visitor
-When I visit a chef's show page
-Then next to each dish I see a button to delete it
-When I click this button
-I am returned to the chef's show page
-And I no longer see the dish listed
+When I visit an ingredient's show page
+Then I see the name of all chefs that use this ingredient in any of their dishes
+And I see that the list of chefs is unique (contains no duplicate chefs)
+And I see that the chefs are ordered alphabetically by name (A - Z)
+```
+
+```
+User Story 3 - Remove a Dish from the Ingredient
+
+As a visitor
+When I visit an ingredient's show page
+Then next to each dish I see a button to remove it
+When I click one of these buttons
+Then the ingredient is no longer associated with the dish
+And I am returned to the ingredient's show page
+And I no longer see the dish listed 
+(Note: You should not destroy the dish record entirely)
 ```
 
 
