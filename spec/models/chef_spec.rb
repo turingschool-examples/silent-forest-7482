@@ -6,6 +6,7 @@ RSpec.describe Chef, type: :model do
 
     @dish_1 = @chef_1.dishes.create!(name: "Dish_1", description: "Tasty")
     @dish_2 = @chef_1.dishes.create!(name: "Dish_2", description: "Spicy")
+    @dish_3 = @chef_1.dishes.create!(name: "Dish_3", description: "Salty")
 
     @ingredient_1 = Ingredient.create!(name: "Ingredient_1", calories: 10)
     @ingredient_2 = Ingredient.create!(name: "Ingredient_2", calories: 20)
@@ -17,6 +18,8 @@ RSpec.describe Chef, type: :model do
 
     DishIngredient.create(dish_id: @dish_2.id, ingredient_id: @ingredient_2.id)
     DishIngredient.create(dish_id: @dish_2.id, ingredient_id: @ingredient_3.id)
+
+    DishIngredient.create(dish_id: @dish_3.id, ingredient_id: @ingredient_3.id)
   end
 
   describe "validations" do
@@ -35,10 +38,7 @@ RSpec.describe Chef, type: :model do
     end
 
     it "#most_popular_ingredients" do
-      expected = [@ingredient_3.name, @ingredient_1.name, @ingredient_3.name]
-
-      expect(@chef_1.most_popular_ingredients.first).to eq(@ingredient_3.name)
-      expect(@chef_1.most_popular_ingredients.last).to eq(@ingredient_1.name)
+      expect(@chef_1.most_popular_ingredients).to eq([@ingredient_3, @ingredient_2, @ingredient_1])
     end
   end
 end
