@@ -1,14 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
-
-  describe "relationships" do
-    it {should have_many :dishes}
-  end
-
+RSpec.describe 'the chef show page' do
   before(:each) do
     @chef_1 = Chef.create!(name: "Emril")
     @chef_2 = Chef.create!(name: "Claudia")
@@ -33,14 +25,40 @@ RSpec.describe Chef, type: :model do
     @dish_ingredient_1 = DishIngredient.create!(dish: @dish_3, ingredient: @ingredient_2)
   end
 
-  describe "instance methods" do
-    describe "#ingredients_for_show" do
-      it 'orders chef ingredients by calories and removes duplicates' do
-        expect(@chef_1.ingredients_for_show[0].name).to eq('Chili')
-        expect(@chef_1.ingredients_for_show[1].name).to eq('Tortilla chips')
-        expect(@chef_1.ingredients_for_show[2].name).to eq('Tortilla')
-        expect(@chef_1.ingredients_for_show[3].name).to eq('Cheese')
-      end
-    end
+
+  it 'us1 - lists the chef' do
+    visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content(@chef_1.name)
+  end
+
+  it 'us1 - lists all dishes and their descriptions for the chef' do
+    visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content("Dishes:")
+      expect(page).to have_content(@dish_1.name)
+      expect(page).to have_content(@dish_2.name)
+      expect(page).to have_content(@dish_1.description)
+      expect(page).to have_content(@dish_2.description)
+  end
+
+  it 'us2 - lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
+    visit "/chefs/#{@chef_1.id}"
+
+      expect(page).to have_content("Chefs Ingredients:")
+      expect(page).to have_content(@ingredient_1.name)
+      expect(page).to have_content(@ingredient_2.name)
+      expect(page).to have_content(@ingredient_1.calories)
+      expect(page).to have_content(@ingredient_2.calories)
+  end
+
+  it 'us3 - lists all ingredients and their calories the chef uses, listed from most to least calories and no duplicates' do
+    visit "/chefs/#{@chef_1.id}"
+
+    expect(page).to have_content(@dish_1.name)
+    click_button "Remove #{@dish_1.name} from Chef"
+
+    expect(page).to have_current_path("/chefs/#{@chef_1.id}")
+    expect(page).to_not have_content(@dish_1.name)
   end
 end
