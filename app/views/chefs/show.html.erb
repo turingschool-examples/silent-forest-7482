@@ -1,0 +1,19 @@
+<h1><%= @chef.name %></h1>
+
+<div id='dishes'>
+  <h2>Dishes: </h2>
+  <ul>
+    <% @chef.dishes.each do |dish| %>
+      <li id="<%= dish.name %>"><%= dish.name %> - <%= dish.description %> <%= button_to 'Delete', dish_path(dish), method: :patch %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id='ingredients'>
+  <h2>Ingredients:</h2>
+  <ul>
+    <% @ingredients.ingredients_by_chef(@chef).each do |ingredient| %>
+      <li><%= ingredient.name %> - <%= ingredient.calories %> calories</li>
+    <% end %>
+  </ul>
+</div>
