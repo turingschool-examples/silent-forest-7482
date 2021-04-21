@@ -1,0 +1,22 @@
+<h1><%= @chef.name %></h1><br>
+<u>
+  <%= @chef.name %>'s Dishes:
+</u>
+
+<ul>
+  <% @dishes.each do |dish| %>
+    <li id="dish-<%= dish.id %>">
+      <%= dish.name %>, <%= dish.description %>, <%= button_to "Delete", "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+    </li>
+  <% end %>
+</ul><br>
+
+<u>
+  <%= @chef.name %>'s Ingredients:
+</u><br>
+
+<ul>
+  <% @chef.ingredient_list.each do |ingredient| %>
+    <li class="ingredient"><%= ingredient.name %>, <%= ingredient.calories %></li>
+  <% end %>
+</ul>
