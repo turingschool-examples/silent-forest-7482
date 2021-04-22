@@ -1,13 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Chef, type: :model do
-  describe "validations" do
-    it {should validate_presence_of :name}
-  end
+RSpec.describe Ingredient, type: :model do
   describe "relationships" do
-    it {should have_many :dishes}
-    it {should have_many(:recipes).through(:dishes)}
-    it {should have_many(:ingredients).through(:recipes)}
+    it { should have_many :recipes }
+    it { should have_many(:dishes).through(:recipes) }
+    it {should have_many(:chefs).through(:dishes)}
   end
 
   describe "instance methods" do
@@ -27,17 +24,12 @@ RSpec.describe Chef, type: :model do
       @recipe4 = Recipe.create!(dish_id: @dish2.id, ingredient_id: @ingredient1.id)
       @recipe5 = Recipe.create!(dish_id: @dish2.id, ingredient_id: @ingredient4.id)
     end
-    describe "#uniq_ingredients" do
-      it "gets unique ingredients for that chef" do
-        expect(@chef1.uniq_ingredients).to eq([@ingredient2, @ingredient1, @ingredient4])
-        expect(@chef1.uniq_ingredients).to_not eq([@ingredient2, @ingredient1, @ingredient4, @ingredient4])
-      end
-    end
 
-    describe "#top_3_ingredients" do
-      it "gets 3 most popular ingredients for that chef" do
-        expect(@chef1.top_3_ingredients).to eq([@ingredient1, @ingredient4, @ingredient2])
-      end
-    end
+    # describe "#popular_ingredients_by_chef" do
+    #   it "gets 3 most popular ingredients for that chef" do
+    #     ingredients = Ingredient.popular_ingredients_by_chef(@chef1.id)
+    #     expect(ingredients.map(&:name)).to eq([@ingredient1.name, @ingredient4.name, @ingredient2.name])
+    #   end
+    # end
   end
 end

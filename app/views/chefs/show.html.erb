@@ -1,0 +1,28 @@
+<h1><%= @chef.name %></h1>
+
+<h3>Names and Descriptions of Dishes</h3>
+<% @chef.dishes.each do |dish| %>
+<section class="dish-<%= dish.id %>">
+<%= dish.name %> - <%= dish.description %><br>
+<%= button_to 'Remove Dish', chef_dish_path(@chef, dish), method: :delete %>
+
+</section>
+<% end %>
+
+<h3>Names and Calories of ingredients in their Dishes</h3>
+<section class= "dish-ingredients">
+  <h3>Ingredients:</h3>
+  <% @chef.uniq_ingredients.each do |ingredient| %>
+  <div id="ingredient-<%= ingredient.id %>">
+      <p>Ingredient: <%= ingredient.name %> - Calories: <%= ingredient.calories %></p>
+  </div>
+  <% end %>
+</section>
+
+
+<section class="popular-ingredients">
+  <h3>3 Most Popular Ingredients</h3>
+  <% @chef.top_3_ingredients.each do |ingredient| %>
+    <p><%= ingredient.name %></p>
+  <% end %>
+</section>
