@@ -1,0 +1,22 @@
+<%= @chef.name %>
+
+</br>
+<% @chef.dishes.each do |dish| %>
+  <%= dish.name %>
+  <%= dish.description %>
+  <%= link_to "Remove #{dish.name}", "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+
+  </br>
+<% end %>
+</br>
+</br>
+</br>
+
+
+</br>
+<% @ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= " : " %>
+  <%= ingredient.calories %>
+  </br>
+<% end %>
