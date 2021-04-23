@@ -1,0 +1,13 @@
+<h2>Chef's Name: <%= @chef.name %></h2>
+<% @chef.dishes.each do |dish| %>
+  <h3>Dish name: <%= dish.name %></h3>
+  Description: <%= dish.description %><br>
+  <%= button_to "Delete #{dish.name}", "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+
+<% end %><br><br>
+
+<h3>Ingredients:</h3>
+<% Ingredient.ordered_unique.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= ingredient.calories %><br>
+<% end %>
