@@ -1,0 +1,21 @@
+<h1><%= @chef.name %></h1>
+
+<h2>Dishes</h2>
+<% @dishes.each do |dish| %>
+  <div id="dish-<%= dish.id %>">
+    <p>Name: <%= dish.name %> Description: <%= dish.description %></p>
+    <%= button_to 'Delete Dish', "/chefs/#{@chef.id}/dishes/#{dish.id}", method: :delete %>
+  </div>
+<% end %>
+
+<h3>Ingredients Used:</h3>
+<% @chef.unique_ingredients_ordered_by_calories.each do |ingredient| %>
+  <p>Ingredient: <%= ingredient.name %> Calories: <%= ingredient.calories %></p>
+<% end %>
+
+<div class="most-popular-ingredients">
+  <h3>Most Popular Ingredients</h3>
+  <% @chef.most_popular_ingredients.each do |ingredient| %>
+    <p>* <%= ingredient.name %></p>
+  <% end %>
+</div>
